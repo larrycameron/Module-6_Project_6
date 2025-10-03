@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FindBugsFilter>
+    <!-- Allow System.out.println in main method for academic project -->
+    <Match>
+        <Class name="UserInput"/>
+        <Method name="main"/>
+        <Bug pattern="DM_DEFAULT_ENCODING"/>
+    </Match>
+    
+    <!-- Allow magic numbers in test cases -->
+    <Match>
+        <Class name="~.*Test"/>
+        <Bug pattern="NUMBER_OF_OBJECTS"/>
+    </Match>
+    
+    <!-- Allow hardcoded strings in test cases -->
+    <Match>
+        <Class name="~.*Test"/>
+        <Bug pattern="DM_STRING_CTOR"/>
+    </Match>
+    
+    <!-- Suppress warnings for academic project specific patterns -->
+    <Match>
+        <Bug pattern="UWF_UNWRITTEN_FIELD"/>
+    </Match>
+    
+    <Match>
+        <Bug pattern="UWF_UNWRITTEN_PUBLIC_OR_PROTECTED_FIELD"/>
+    </Match>
+</FindBugsFilter>
+

@@ -1,0 +1,191 @@
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                           USER INPUT PROGRAM DESIGN                            │
+│                              Architecture Overview                             │
+└─────────────────────────────────────────────────────────────────────────────────┘
+
+                    ┌─────────────────────────────────────────┐
+                    │            DESIGN PATTERN:              │
+                    │         PIPELINE ARCHITECTURE           │
+                    └─────────────────────────────────────────┘
+
+┌─────────────┐    ┌──────────────┐    ┌─────────────┐    ┌─────────────┐    ┌─────────────┐
+│   INPUT     │    │   PARSING    │    │  STORAGE    │    │ PROCESSING  │    │   OUTPUT    │
+│   LAYER     │───▶│    LAYER     │───▶│   LAYER     │───▶│    LAYER    │───▶│   LAYER     │
+└─────────────┘    └──────────────┘    └─────────────┘    └─────────────┘    └─────────────┘
+        │                   │                   │                   │                   │
+        ▼                   ▼                   ▼                   ▼                   ▼
+┌─────────────┐    ┌──────────────┐    ┌─────────────┐    ┌─────────────┐    ┌─────────────┐
+│   Scanner   │    │ String.split │    │ LinkedList  │    │Collections  │    │System.out   │
+│   Class     │    │   Method     │    │ Collection  │    │   .sort()   │    │  .println() │
+│             │    │              │    │             │    │             │    │             │
+│ • nextLine()│    │ • Regex      │    │ • add()     │    │ • TimSort   │    │ • Display   │
+│ • close()   │    │ • Tokenize   │    │ • Dynamic   │    │ • In-place  │    │ • Format    │
+│ • Resource  │    │ • Flexible   │    │ • Memory    │    │ • Optimized │    │ • Console   │
+│   Mgmt      │    │   Delimiter  │    │   Mgmt      │    │             │    │   Output    │
+└─────────────┘    └──────────────┘    └─────────────┘    └─────────────┘    └─────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                              DATA FLOW DIAGRAM                                 │
+└─────────────────────────────────────────────────────────────────────────────────┘
+
+Raw String Input
+       │
+       ▼
+┌─────────────────┐
+│ Scanner.nextLine│  ←─── FACADE PATTERN
+│ (System.in)     │
+└─────────────────┘
+       │
+       ▼
+   String Line
+       │
+       ▼
+┌─────────────────┐
+│ String.split()  │  ←─── STRATEGY PATTERN
+│ ("[ ,]+")       │
+└─────────────────┘
+       │
+       ▼
+   String[] Tokens
+       │
+       ▼
+┌─────────────────┐
+│Integer.parseInt │  ←─── TYPE CONVERSION
+│+ LinkedList.add │
+└─────────────────┘
+       │
+       ▼
+LinkedList<Integer>
+       │
+       ▼
+┌─────────────────┐
+│Collections.sort │  ←─── TEMPLATE METHOD PATTERN
+│(Optimized)      │
+└─────────────────┘
+       │
+       ▼
+Sorted LinkedList<Integer>
+       │
+       ▼
+┌─────────────────┐
+│System.out.println│  ←─── OUTPUT PATTERN
+│(Formatted)      │
+└─────────────────┘
+       │
+       ▼
+   Console Output
+
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                            DESIGN PATTERNS USED                                │
+└─────────────────────────────────────────────────────────────────────────────────┘
+
+1. PIPELINE PATTERN
+   ┌─────────┐    ┌─────────┐    ┌─────────┐    ┌─────────┐    ┌─────────┐
+   │  Input  │───▶│  Parse  │───▶│  Store  │───▶│ Process │───▶│ Output  │
+   └─────────┘    └─────────┘    └─────────┘    └─────────┘    └─────────┘
+
+2. FACADE PATTERN
+   ┌─────────────────────────────────────────┐
+   │              Scanner Class              │
+   │  ┌─────────┐ ┌─────────┐ ┌─────────┐   │
+   │  │Stream   │ │Buffering│ │Resource │   │
+   │  │Mgmt     │ │         │ │Mgmt     │   │
+   │  └─────────┘ └─────────┘ └─────────┘   │
+   └─────────────────────────────────────────┘
+                    │
+                    ▼
+            Simplified Interface
+
+3. STRATEGY PATTERN
+   ┌─────────────────────────────────────────┐
+   │            Parsing Strategy             │
+   │  ┌─────────────────────────────────┐   │
+   │  │     Regex Pattern: "[ ,]+"      │   │
+   │  │  • Flexible delimiters          │   │
+   │  │  • Space and comma support      │   │
+   │  │  • Multiple consecutive chars   │   │
+   │  └─────────────────────────────────┘   │
+   └─────────────────────────────────────────┘
+
+4. COLLECTION PATTERN
+   ┌─────────────────────────────────────────┐
+   │            LinkedList<T>                │
+   │  ┌─────────┐ ┌─────────┐ ┌─────────┐   │
+   │  │Dynamic  │ │Efficient│ │Memory   │   │
+   │  │Sizing   │ │Insertion│ │Mgmt     │   │
+   │  └─────────┘ └─────────┘ └─────────┘   │
+   └─────────────────────────────────────────┘
+
+5. TEMPLATE METHOD PATTERN
+   ┌─────────────────────────────────────────┐
+   │         Collections.sort()              │
+   │  ┌─────────────────────────────────┐   │
+   │  │     Optimized Algorithm         │   │
+   │  │  • TimSort implementation       │   │
+   │  │  • In-place sorting            │   │
+   │  │  • Generic comparison          │   │
+   │  └─────────────────────────────────┘   │
+   └─────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                              COMPONENT RELATIONSHIPS                          │
+└─────────────────────────────────────────────────────────────────────────────────┘
+
+                    ┌─────────────────┐
+                    │   UserInput     │
+                    │   (Main Class)  │
+                    └─────────────────┘
+                           │
+                           │ uses
+                           ▼
+        ┌─────────────────────────────────────────────────┐
+        │                                                 │
+        ▼                                                 ▼
+┌─────────────┐    ┌─────────────┐    ┌─────────────────┐
+│   Scanner   │    │  LinkedList │    │   Collections   │
+│   (Input)   │    │  (Storage)  │    │   (Processing)  │
+│             │    │             │    │                 │
+│ • nextLine()│    │ • add()     │    │ • sort()        │
+│ • close()   │    │ • Dynamic   │    │ • Optimized     │
+└─────────────┘    └─────────────┘    └─────────────────┘
+        │                   │                   │
+        │                   │                   │
+        ▼                   ▼                   ▼
+┌─────────────┐    ┌─────────────┐    ┌─────────────────┐
+│   String    │    │  Integer    │    │   System.out    │
+│ (Parsing)   │    │ (Conversion)│    │    (Output)     │
+│             │    │             │    │                 │
+│ • split()   │    │ • parseInt()│    │ • println()     │
+│ • Regex     │    │ • Validation│    │ • Formatting    │
+└─────────────┘    └─────────────┘    └─────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                              COMPLEXITY ANALYSIS                              │
+└─────────────────────────────────────────────────────────────────────────────────┘
+
+TIME COMPLEXITY:
+┌─────────────┐ ┌─────────────┐ ┌─────────────┐ ┌─────────────┐ ┌─────────────┐
+│   Input     │ │   Parse     │ │   Store     │ │  Process    │ │   Output    │
+│   O(n)      │ │   O(n)      │ │   O(k)      │ │  O(k log k) │ │   O(k)      │
+└─────────────┘ └─────────────┘ └─────────────┘ └─────────────┘ └─────────────┘
+     │               │               │               │               │
+     ▼               ▼               ▼               ▼               ▼
+  Read input    Split string    Insert k items   Sort k items   Display k items
+  n characters  n characters    O(1) each        O(k log k)     O(k) total
+  O(n) total    O(n) total      O(k) total       total          total
+
+OVERALL COMPLEXITY: O(k log k) where k = number of integers
+(dominated by sorting operation)
+
+SPACE COMPLEXITY:
+┌─────────────┐ ┌─────────────┐ ┌─────────────┐
+│   Input     │ │   Tokens    │ │   Storage   │
+│   O(n)      │ │   O(k)      │ │   O(k)      │
+└─────────────┘ └─────────────┘ └─────────────┘
+     │               │               │
+     ▼               ▼               ▼
+  String input   String array    LinkedList
+  n characters   k tokens        k integers
+
+OVERALL SPACE: O(k) where k = number of integers
+
