@@ -172,7 +172,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **Larry J. Cameron**
 - **Course**: Module 6 - Project 6
-- **Institution**: [Institution Name]
+- **Institution**: Merrimack College
 - **Version**: 1.0
 - **Date**: September 2025
 
