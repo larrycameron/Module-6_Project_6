@@ -1,0 +1,144 @@
+<?xml version="1.0"?>
+<ruleset name="Stack Integer Sorter PMD Rules"
+         xmlns="http://pmd.sourceforge.net/ruleset/2.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://pmd.sourceforge.net/ruleset/2.0.0 https://pmd.sourceforge.io/ruleset_2_0_0.xsd">
+
+    <description>PMD ruleset for Stack Integer Sorter project</description>
+
+    <!-- Include all rules from the best practices category -->
+    <rule ref="category/java/bestpractices.xml">
+        <!-- Exclude some rules that are too strict for this project -->
+        <exclude name="AvoidReassigningParameters"/>
+        <exclude name="JUnitTestContainsTooManyAsserts"/>
+    </rule>
+
+    <!-- Include all rules from the code style category -->
+    <rule ref="category/java/codestyle.xml">
+        <!-- Exclude some rules that conflict with project style -->
+        <exclude name="ShortVariable"/>
+        <exclude name="LongVariable"/>
+    </rule>
+
+    <!-- Include all rules from the design category -->
+    <rule ref="category/java/design.xml">
+        <!-- Exclude some rules that are not applicable -->
+        <exclude name="LawOfDemeter"/>
+        <exclude name="DataClass"/>
+    </rule>
+
+    <!-- Include all rules from the error prone category -->
+    <rule ref="category/java/errorprone.xml">
+        <!-- Exclude some rules that are too strict -->
+        <exclude name="AvoidFieldNameMatchingMethodName"/>
+    </rule>
+
+    <!-- Include all rules from the performance category -->
+    <rule ref="category/java/performance.xml"/>
+
+    <!-- Include all rules from the security category -->
+    <rule ref="category/java/security.xml"/>
+
+    <!-- Custom rules for this project -->
+    <rule ref="category/java/bestpractices.xml/UnusedImports"/>
+    <rule ref="category/java/bestpractices.xml/UnusedPrivateField"/>
+    <rule ref="category/java/bestpractices.xml/UnusedLocalVariable"/>
+    <rule ref="category/java/bestpractices.xml/UnusedPrivateMethod"/>
+    <rule ref="category/java/bestpractices.xml/UnusedFormalParameter"/>
+
+    <!-- Code style rules -->
+    <rule ref="category/java/codestyle.xml/ShortVariable">
+        <properties>
+            <property name="minimum" value="2"/>
+        </properties>
+    </rule>
+
+    <rule ref="category/java/codestyle.xml/LongVariable">
+        <properties>
+            <property name="minimum" value="20"/>
+        </properties>
+    </rule>
+
+    <!-- Design rules -->
+    <rule ref="category/java/design.xml/TooManyMethods">
+        <properties>
+            <property name="maxmethods" value="20"/>
+        </properties>
+    </rule>
+
+    <rule ref="category/java/design.xml/TooManyFields">
+        <properties>
+            <property name="maxfields" value="15"/>
+        </properties>
+    </rule>
+
+    <!-- Error prone rules -->
+    <rule ref="category/java/errorprone.xml/AvoidBranchingStatementAsLastInLoop"/>
+    <rule ref="category/java/errorprone.xml/AvoidMultipleUnaryOperators"/>
+    <rule ref="category/java/errorprone.xml/AvoidUsingOctalValues"/>
+    <rule ref="category/java/errorprone.xml/BeanMembersShouldSerialize"/>
+    <rule ref="category/java/errorprone.xml/CallSuperInConstructor"/>
+    <rule ref="category/java/errorprone.xml/DataflowAnomalyAnalysis"/>
+    <rule ref="category/java/errorprone.xml/DefaultLabelNotLastInSwitchStmt"/>
+    <rule ref="category/java/errorprone.xml/DoNotCallGarbageCollectionExplicitly"/>
+    <rule ref="category/java/errorprone.xml/DoNotExtendJavaLangError"/>
+    <rule ref="category/java/errorprone.xml/DoNotHardCodeSDCard"/>
+    <rule ref="category/java/errorprone.xml/DoNotThrowExceptionInFinally"/>
+    <rule ref="category/java/errorprone.xml/EmptyCatchBlock"/>
+    <rule ref="category/java/errorprone.xml/EmptyFinallyBlock"/>
+    <rule ref="category/java/errorprone.xml/EmptyIfStmt"/>
+    <rule ref="category/java/errorprone.xml/EmptyInitializer"/>
+    <rule ref="category/java/errorprone.xml/EmptyStatementBlock"/>
+    <rule ref="category/java/errorprone.xml/EmptyStatementNotInLoop"/>
+    <rule ref="category/java/errorprone.xml/EmptySwitchStatements"/>
+    <rule ref="category/java/errorprone.xml/EmptyTryBlock"/>
+    <rule ref="category/java/errorprone.xml/EmptyWhileStmt"/>
+    <rule ref="category/java/errorprone.xml/EqualsNull"/>
+    <rule ref="category/java/errorprone.xml/ExtendsObject"/>
+    <rule ref="category/java/errorprone.xml/FieldNamingConventions"/>
+    <rule ref="category/java/errorprone.xml/ForLoopCanBeWhileLoop"/>
+    <rule ref="category/java/errorprone.xml/ForLoopShouldBeWhileLoop"/>
+    <rule ref="category/java/errorprone.xml/IdempotentOperations"/>
+    <rule ref="category/java/errorprone.xml/IfElseStmtsMustUseBraces"/>
+    <rule ref="category/java/errorprone.xml/IfStmtsMustUseBraces"/>
+    <rule ref="category/java/errorprone.xml/InfiniteLoopRule"/>
+    <rule ref="category/java/errorprone.xml/InfiniteRecursiveLoop"/>
+    <rule ref="category/java/errorprone.xml/InstantiationToGetClass"/>
+    <rule ref="category/java/errorprone.xml/InvalidLogMessageFormat"/>
+    <rule ref="category/java/errorprone.xml/InvalidSlf4jMessageFormat"/>
+    <rule ref="category/java/errorprone.xml/JumbledIncrementer"/>
+    <rule ref="category/java/errorprone.xml/JUnitAssertionsShouldIncludeMessage"/>
+    <rule ref="category/java/errorprone.xml/JUnitTestContainsTooManyAsserts"/>
+    <rule ref="category/java/errorprone.xml/JUnitTestsShouldIncludeAssert"/>
+    <rule ref="category/java/errorprone.xml/LinguisticNaming"/>
+    <rule ref="category/java/errorprone.xml/LooseCoupling"/>
+    <rule ref="category/java/errorprone.xml/MisplacedNullCheck"/>
+    <rule ref="category/java/errorprone.xml/MissingBreakInSwitch"/>
+    <rule ref="category/java/errorprone.xml/MissingSerialVersionUID"/>
+    <rule ref="category/java/errorprone.xml/MissingStaticMethodInNonInstantiatableClass"/>
+    <rule ref="category/java/errorprone.xml/MultipleUnaryOperators"/>
+    <rule ref="category/java/errorprone.xml/NullAssignment"/>
+    <rule ref="category/java/errorprone.xml/OverrideBothEqualsAndHashcode"/>
+    <rule ref="category/java/errorprone.xml/ProperCloneImplementation"/>
+    <rule ref="category/java/errorprone.xml/ProperLogger"/>
+    <rule ref="category/java/errorprone.xml/RedundantFieldInitializer"/>
+    <rule ref="category/java/errorprone.xml/ReturnFromFinallyBlock"/>
+    <rule ref="category/java/errorprone.xml/SimpleDateFormatNeedsLocale"/>
+    <rule ref="category/java/errorprone.xml/SingleMethodSingleton"/>
+    <rule ref="category/java/errorprone.xml/SingletonClassReturningNewInstance"/>
+    <rule ref="category/java/errorprone.xml/StringBufferInstantiationWithChar"/>
+    <rule ref="category/java/errorprone.xml/SuspiciousEqualsMethodName"/>
+    <rule ref="category/java/errorprone.xml/SuspiciousHashcodeMethodName"/>
+    <rule ref="category/java/errorprone.xml/SuspiciousOctalEscape"/>
+    <rule ref="category/java/errorprone.xml/TestClassWithoutTestCases"/>
+    <rule ref="category/java/errorprone.xml/UnconditionalIfStatement"/>
+    <rule ref="category/java/errorprone.xml/UnnecessaryConversionTemporary"/>
+    <rule ref="category/java/errorprone.xml/UnnecessaryReturn"/>
+    <rule ref="category/java/errorprone.xml/UnnecessaryTemporaryField"/>
+    <rule ref="category/java/errorprone.xml/UnusedNullCheckInEquals"/>
+    <rule ref="category/java/errorprone.xml/UselessOperationOnImmutable"/>
+    <rule ref="category/java/errorprone.xml/UselessOverridingMethod"/>
+    <rule ref="category/java/errorprone.xml/UseLocaleWithCaseConversions"/>
+    <rule ref="category/java/errorprone.xml/UseProperClassLoader"/>
+
+</ruleset>
