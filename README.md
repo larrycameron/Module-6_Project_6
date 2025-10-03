@@ -20,10 +20,25 @@ Both projects demonstrate extensive code reuse, comprehensive testing, static an
 ```
 Module-6_Project_6/
 ├── 📁 Module-4-Project/           # Pipeline Architecture Project
-│   ├── 📄 UserInput.java          # Main program (LinkedList)
-│   ├── 📄 README.md               # Project documentation
+│   ├── 📁 src/                    # Source code
+│   │   ├── 📄 UserInput.java      # Main program (LinkedList)
+│   │   └── 📄 UserInputDemo.java  # Demo application
 │   ├── 📁 docs/                   # Design documentation
-│   └── 📁 .github/workflows/      # CI/CD configuration
+│   │   ├── 📄 DESIGN_DOCUMENTATION.md
+│   │   ├── 📄 CODE_REUSE_DOCUMENTATION.md
+│   │   └── 📁 javadoc/            # Generated documentation
+│   ├── 📁 test/                   # Test files
+│   ├── 📁 .github/workflows/      # CI/CD configuration
+│   ├── 📁 config/                 # Configuration files
+│   ├── 📄 build.bat/.sh           # Build scripts
+│   ├── 📄 test.bat/.sh            # Test scripts
+│   ├── 📄 MANIFEST.MF             # JAR manifest
+│   ├── 📄 PROJECT_SUMMARY.md      # Project summary
+│   ├── 📄 TESTING_DOCUMENTATION.md # Testing docs
+│   ├── 📄 COMMAND_REFERENCE.md    # Command reference
+│   ├── 📄 HOW_TO_ACCESS_AND_USE.md # Usage instructions
+│   ├── 📄 INSTRUCTOR_QUICK_REFERENCE.md # Instructor guide
+│   └── 📄 README.md               # Project documentation
 ├── 📁 Module-5-Project/           # Maintenance Task Project
 │   ├── 📄 UserInput.java          # Main program (Stack)
 │   ├── 📄 UserInputTest.java      # Comprehensive unit tests
