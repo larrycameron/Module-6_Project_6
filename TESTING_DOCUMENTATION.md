@@ -344,5 +344,5 @@ java -jar tools/spotbugs-4.7.3/lib/spotbugs.jar -textui -include config/spotbugs
 
 ---
 
-**Note**: This testing and static analysis framework ensures high code quality, comprehensive test coverage, and adherence to best practices for the Module 4 Project 4 academic submission.
+
 
