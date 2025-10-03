@@ -154,6 +154,7 @@ java -cp "src;test\java" SimpleTest
 - [COMMAND_REFERENCE.md](COMMAND_REFERENCE.md) - Essential commands
 - [docs/DESIGN_DOCUMENTATION.md](docs/DESIGN_DOCUMENTATION.md) - Architecture details
 - [docs/CODE_REUSE_DOCUMENTATION.md](docs/CODE_REUSE_DOCUMENTATION.md) - Code reuse analysis
+- [docs/javadoc/index.html](docs/javadoc/index.html) - **JavaDoc API Documentation** (Open in browser)
 
 ## 🎯 Usage Examples
 

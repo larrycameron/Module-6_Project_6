@@ -145,8 +145,8 @@ Thumbs.db
 !TESTING_AND_ANALYSIS_SUMMARY.md
 !PROJECT_SUMMARY.md
 
-# Generated documentation
-docs/javadoc/
+# Generated documentation (keeping JavaDoc for academic presentation)
+# docs/javadoc/ - INCLUDED for GitHub
 docs/element-list
 docs/*-search-index.js
 
