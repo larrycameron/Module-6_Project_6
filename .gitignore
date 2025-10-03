@@ -153,6 +153,18 @@ docs/*-search-index.js
 # Project structure files
 PROJECT_STRUCTURE.txt
 
+# JUnit-dependent test files (not working without dependencies)
+test/java/UserInputTest.java
+test/java/TestRunner.java
+
+# PDF files (large, not needed for GitHub)
+*.pdf
+
+# Checkstyle and SpotBugs tools (optional)
+tools/
+checkstyle-*.jar
+spotbugs-*.jar
+
 # Documentation build artifacts
 docs/_build/
 docs/build/

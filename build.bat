@@ -1,37 +1,43 @@
 @echo off
-echo Building Module 4 Project 4 - UserInput Integer Sorter
-echo =====================================================
+echo Building Module 4 Project 4
+echo ============================
 
 echo.
-echo Compiling Java source files...
+echo Compiling source code...
 javac src/UserInput.java
-
 if %ERRORLEVEL% NEQ 0 (
-    echo ERROR: Compilation failed!
+    echo ERROR: Source compilation failed!
     pause
     exit /b 1
 )
-
-echo ✅ Compilation successful!
+echo ✅ Source compilation successful!
 
 echo.
-echo Creating JAR file...
-jar cfm UserInput.jar MANIFEST.MF -C src UserInput.class
-
+echo Compiling demo version...
+javac -cp src src/UserInputDemo.java
 if %ERRORLEVEL% NEQ 0 (
-    echo ERROR: JAR creation failed!
+    echo ERROR: Demo compilation failed!
     pause
     exit /b 1
 )
-
-echo ✅ JAR file created successfully!
+echo ✅ Demo compilation successful!
 
 echo.
-echo Running the program...
-echo =====================
-java -cp src UserInput
+echo Compiling test code...
+javac -cp "src;test" test/java/SimpleTest.java
+if %ERRORLEVEL% NEQ 0 (
+    echo ERROR: Test compilation failed!
+    pause
+    exit /b 1
+)
+echo ✅ Test compilation successful!
 
 echo.
 echo Build completed successfully!
+echo.
+echo Available programs:
+echo - UserInput: Interactive integer sorter
+echo - UserInputDemo: Non-interactive demo with test cases
+echo - SimpleTest: Comprehensive test suite
+echo.
 pause
-
