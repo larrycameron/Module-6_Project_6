@@ -194,16 +194,14 @@ Runs comprehensive test suite with detailed results.
 - Professional documentation
 - Build automation
 
-## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## 👨‍💻 Author
 
 **Larry Cameron**
 - Project: Module 4 Project 4
-- Course: [Course Name]
-- Institution: [Institution Name]
+- Course: CSC6301
+- Institution: Merrimack College
 
 ---
 
