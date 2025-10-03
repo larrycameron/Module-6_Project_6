@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Main-Class: UserInput
+Created-By: Larry Cameron
+Implementation-Title: Module 4 Project 4 - UserInput Integer Sorter
+Implementation-Version: 1.0.0
+Implementation-Vendor: Larry Cameron
+Description: A Java application demonstrating Pipeline Architecture and code reuse practices
+

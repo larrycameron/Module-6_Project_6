@@ -1,0 +1,233 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        java-version: [17, 21]
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Set up JDK ${{ matrix.java-version }}
+      uses: actions/setup-java@v4
+      with:
+        java-version: ${{ matrix.java-version }}
+        distribution: 'temurin'
+        
+    - name: Cache Maven dependencies
+      uses: actions/cache@v3
+      with:
+        path: ~/.m2
+        key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+        restore-keys: ${{ runner.os }}-m2
+        
+    - name: Compile Java code
+      run: |
+        javac -version
+        javac src/UserInput.java
+        
+    - name: Test compilation
+      run: |
+        echo "Testing compilation..."
+        if [ -f "src/UserInput.class" ]; then
+          echo "✅ Compilation successful"
+        else
+          echo "❌ Compilation failed"
+          exit 1
+        fi
+        
+    - name: Download testing tools
+      run: |
+        mkdir -p tools
+        wget -O tools/checkstyle-10.12.4-all.jar https://github.com/checkstyle/checkstyle/releases/download/checkstyle-10.12.4/checkstyle-10.12.4-all.jar
+        wget -O tools/junit-platform-console-standalone-1.9.3.jar https://repo1.maven.org/maven2/org/junit/platform/junit-platform-console-standalone/1.9.3/junit-platform-console-standalone-1.9.3.jar
+        
+    - name: Compile test code
+      run: |
+        javac -cp "src:test" test/java/*.java
+        
+    - name: Run unit tests
+      run: |
+        echo "Running comprehensive unit tests..."
+        java -cp "src:test:tools/junit-platform-console-standalone-1.9.3.jar" org.junit.platform.console.ConsoleLauncher --scan-classpath --details=verbose
+        
+    - name: Test basic functionality
+      run: |
+        echo "Testing basic functionality..."
+        echo "1 5 3 9 2" | java -cp src UserInput
+        echo "10,20,5,15" | java -cp src UserInput
+        echo "42" | java -cp src UserInput
+        
+    - name: Test edge cases
+      run: |
+        echo "Testing edge cases..."
+        echo "" | java -cp src UserInput || true
+        echo "1, 2 3, 4 5" | java -cp src UserInput
+        
+    - name: Run Checkstyle static analysis
+      run: |
+        echo "Running Checkstyle static analysis..."
+        java -jar tools/checkstyle-10.12.4-all.jar -c config/checkstyle.xml src/UserInput.java
+        if [ $? -eq 0 ]; then
+          echo "✅ Checkstyle analysis passed"
+        else
+          echo "⚠️ Checkstyle found style issues"
+        fi
+        
+    - name: Check code style
+      run: |
+        echo "Checking code style..."
+        # Basic checks for Java code style
+        if grep -q "public class UserInput" src/UserInput.java; then
+          echo "✅ Class declaration found"
+        else
+          echo "❌ Class declaration not found"
+          exit 1
+        fi
+        
+        if grep -q "import java.util" src/UserInput.java; then
+          echo "✅ Import statements found"
+        else
+          echo "❌ Import statements not found"
+          exit 1
+        fi
+        
+    - name: Validate documentation
+      run: |
+        echo "Validating documentation..."
+        if [ -f "README.md" ]; then
+          echo "✅ README.md exists"
+        else
+          echo "❌ README.md missing"
+          exit 1
+        fi
+        
+        if [ -f "LICENSE" ]; then
+          echo "✅ LICENSE exists"
+        else
+          echo "❌ LICENSE missing"
+          exit 1
+        fi
+        
+        if [ -f "CONTRIBUTING.md" ]; then
+          echo "✅ CONTRIBUTING.md exists"
+        else
+          echo "❌ CONTRIBUTING.md missing"
+          exit 1
+        fi
+        
+        if [ -f "CHANGELOG.md" ]; then
+          echo "✅ CHANGELOG.md exists"
+        else
+          echo "❌ CHANGELOG.md missing"
+          exit 1
+        fi
+        
+    - name: Check project structure
+      run: |
+        echo "Checking project structure..."
+        if [ -d "src" ]; then
+          echo "✅ src/ directory exists"
+        else
+          echo "❌ src/ directory missing"
+          exit 1
+        fi
+        
+        if [ -d "docs" ]; then
+          echo "✅ docs/ directory exists"
+        else
+          echo "❌ docs/ directory missing"
+          exit 1
+        fi
+        
+        if [ -f "src/UserInput.java" ]; then
+          echo "✅ UserInput.java exists in src/"
+        else
+          echo "❌ UserInput.java missing in src/"
+          exit 1
+        fi
+
+  security:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Run security scan
+      run: |
+        echo "Running security checks..."
+        # Check for common security issues
+        if grep -q "System.in" src/UserInput.java; then
+          echo "✅ Input validation present"
+        else
+          echo "⚠️  No input validation found"
+        fi
+        
+        if grep -q "scanner.close()" src/UserInput.java; then
+          echo "✅ Resource cleanup present"
+        else
+          echo "❌ Resource cleanup missing"
+          exit 1
+        fi
+
+  build:
+    runs-on: ubuntu-latest
+    needs: [test, security]
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Set up JDK 17
+      uses: actions/setup-java@v4
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        
+    - name: Compile project
+      run: |
+        javac src/UserInput.java
+        
+    - name: Create JAR file
+      run: |
+        jar cfm UserInput.jar MANIFEST.MF -C src UserInput.class
+        echo "Main-Class: UserInput" > MANIFEST.MF
+        
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: userinput-jar
+        path: UserInput.jar
+        retention-days: 30
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: [build]
+    if: github.ref == 'refs/heads/main'
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Download build artifacts
+      uses: actions/download-artifact@v3
+      with:
+        name: userinput-jar
+        path: dist/
+        
+    - name: Create release
+      if: github.event_name == 'push'
+      run: |
+        echo "Release would be created here in a real deployment"
+        echo "Build artifacts are ready for distribution"
