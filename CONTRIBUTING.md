@@ -280,5 +280,5 @@ Contributors will be recognized in:
 - Release notes
 - Project documentation
 
-Thank you for contributing to this project! Your efforts help make it better for everyone.
+
 
