@@ -258,7 +258,7 @@ Contributors will be recognized in:
 
 ## 📄 License
 
-By contributing, you agree that your contributions will be licensed under the same MIT License that covers the project.
+By contributing, you agree that your contributions will be subject to the same terms as the project (all rights reserved).
 
 ---
 

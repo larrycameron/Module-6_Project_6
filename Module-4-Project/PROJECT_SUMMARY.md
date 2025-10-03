@@ -117,7 +117,7 @@ Module_4_Project_4/
 Your project is now ready for GitHub with:
 
 1. **Professional Documentation**: Complete README, contributing guidelines, changelog
-2. **Proper Licensing**: MIT License for open source distribution
+2. **No License**: All rights reserved
 3. **CI/CD Pipeline**: Automated testing and building
 4. **Build Scripts**: Easy compilation and execution
 5. **Organized Structure**: Clean, professional project layout

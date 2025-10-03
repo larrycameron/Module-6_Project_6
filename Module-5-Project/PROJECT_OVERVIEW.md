@@ -150,7 +150,7 @@ javadoc -d doc -author -version UserInput.java
 - **README.md**: Project overview and usage
 - **CONTRIBUTING.md**: Contribution guidelines
 - **CODE_OF_CONDUCT.md**: Community standards
-- **LICENSE**: MIT License
+- **No License**: All rights reserved
 - **CHANGELOG.md**: Version history
 
 ### Technical Documentation

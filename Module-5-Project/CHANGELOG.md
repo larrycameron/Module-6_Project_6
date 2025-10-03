@@ -12,7 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Comprehensive CONTRIBUTING.md guidelines
 - CODE_OF_CONDUCT.md for community standards
 - ISSUE_TEMPLATE.md for bug reports
-- MIT License file
+- Removed license files
 - .gitignore for proper version control
 
 ### Changed

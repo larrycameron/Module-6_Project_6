@@ -49,7 +49,7 @@ Module-6_Project_6/
 │   ├── 📄 run-tests.sh            # Unix/Linux test runner
 │   └── 📄 README.md               # Project documentation
 ├── 📄 README.md                   # This file
-├── 📄 LICENSE                     # MIT License
+├── 📄 [No License]                # No license specified
 ├── 📄 CONTRIBUTING.md             # Contribution guidelines
 ├── 📄 CHANGELOG.md                # Version history
 └── 📄 .gitignore                  # Git ignore rules
@@ -166,7 +166,7 @@ We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.
 
 ## 📜 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project has no specific license. All rights reserved.
 
 ## 👨‍💻 Author
 

@@ -108,7 +108,7 @@ Module-5-Project/
 ├── 📄 README.md                   # This file
 ├── 📄 TESTING_GUIDE.md            # Comprehensive testing guide
 ├── 📄 CONTRIBUTING.md             # Contribution guidelines
-├── 📄 LICENSE                     # MIT License
+├── 📄 [No License]                # No license specified
 ├── 📄 CHANGELOG.md                # Version history
 ├── 📄 CODE_OF_CONDUCT.md          # Community guidelines
 ├── 📄 PROJECT_OVERVIEW.md         # Technical overview
@@ -220,7 +220,7 @@ We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.
 
 ## 📜 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project has no specific license. All rights reserved.
 
 ## 👨‍💻 Author
 
