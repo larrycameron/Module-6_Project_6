@@ -9,7 +9,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - Comprehensive README.md with project overview and usage instructions
-- MIT License for open source distribution
 - CONTRIBUTING.md with detailed contribution guidelines
 - CHANGELOG.md for version tracking
 - .gitignore file for Java projects
